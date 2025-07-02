@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #0d253f;
+  color: #fff;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__logo-image {
+  width: 150px;
+  height: auto;
+}
+
+.header__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.header__nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header__nav-item {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header__nav-item:hover {
+  text-decoration: underline;
+}
