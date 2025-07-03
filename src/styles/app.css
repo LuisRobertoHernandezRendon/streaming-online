@@ -15,6 +15,20 @@ body {
   line-height: 1.6;
 }
 
+/* Flex para empujar footer abajo */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Main ocupa todo el espacio disponible */
+main {
+  flex: 1;
+  padding: 2rem;
+  min-height: calc(100vh - 160px); /* ajusta según alto de header+footer */
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -34,9 +48,4 @@ button {
 img {
   max-width: 100%;
   display: block;
-}
-
-main {
-  padding: 2rem;
-  min-height: calc(100vh - 160px); /* ajusta según tu header/footer */
 }
