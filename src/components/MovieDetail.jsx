@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { movies } from "../data/data";
 import "../styles/movieDetail.css";
 
-const MovieDetail = () => {
+const MovieDetail = ({ rentMovie }) => {
   const { id } = useParams();
   const movie = movies.find((m) => m.id === parseInt(id));
 
@@ -45,6 +45,15 @@ const MovieDetail = () => {
             <p className="movie-detail__section">
               <strong>Actores:</strong> {movie.actors.join(", ")}
             </p>
+            <div className="movie-detail__actions">
+              <button
+                className="movie-detail__button"
+                onClick={() => rentMovie(movie)}
+              >
+                Alquilar {movie.priceRental} MX
+              </button>
+              <button className="movie-detail__button">Comprar</button>
+            </div>
           </div>
         </div>
 

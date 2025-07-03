@@ -14,7 +14,7 @@ export default function Header() {
           Inicio
         </Link>
         <Link className="header__nav-item" to="/rentals">
-          Alquileres
+          Mis Alquileres
         </Link>
         <Link className="header__nav-item" to="/purchases">
           Compras
