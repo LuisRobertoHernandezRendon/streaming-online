@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { movies } from "../data/data";
-import "../styles/MovieDetail.css";
+import "../styles/movieDetail.css";
 
 const MovieDetail = () => {
   const { id } = useParams();
