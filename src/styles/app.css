@@ -15,18 +15,21 @@ body {
   line-height: 1.6;
 }
 
-/* Flex para empujar footer abajo */
+/* El contenedor flex que controla el footer */
 #root {
-  display: flex;
-  flex-direction: column;
   min-height: 100%;
 }
 
-/* Main ocupa todo el espacio disponible */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main ocupa el espacio disponible */
 main {
   flex: 1;
   padding: 2rem;
-  min-height: calc(100vh - 160px); /* ajusta según alto de header+footer */
 }
 
 a {

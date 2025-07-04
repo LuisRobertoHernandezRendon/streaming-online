@@ -13,20 +13,24 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<MovieList />} />
-          <Route
-            path="/details/:id"
-            element={<MovieDetail rentMovie={rentMovie} />}
-          />
-          <Route
-            path="/rentals"
-            element={<RentsList rents={rents} returnMovie={returnMovie} />}
-          />
-          {/* <Route path="/purchases" element={<PurchasesPage />} /> */}
-        </Routes>
-        <Footer />
+        <div className="app-wrapper">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<MovieList />} />
+              <Route
+                path="/details/:id"
+                element={<MovieDetail rentMovie={rentMovie} />}
+              />
+              <Route
+                path="/rentals"
+                element={<RentsList rents={rents} returnMovie={returnMovie} />}
+              />
+              {/* <Route path="/purchases" element={<PurchasesPage />} /> */}
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </BrowserRouter>
     </>
   );

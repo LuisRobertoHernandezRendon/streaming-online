@@ -26,15 +26,19 @@ export const useRents = () => {
 
       const newItem = {
         ...item,
+        rentDate: today.toISOString().split("T")[0],
         returnDate: returnDate.toISOString().split("T")[0],
       };
 
       setRents([...rents, newItem]);
+
+      alert("¡Película rentada con éxito!");
     }
   }
 
   function returnMovie(id) {
     setRents((prevRents) => prevRents.filter((movie) => movie.id !== id));
+    alert(`Has devuelto la película correctamente.`);
   }
 
   return {

@@ -1,4 +1,3 @@
-// src/components/MyRents.jsx
 import "../styles/rentsList.css";
 
 export default function RentsList({ rents, returnMovie }) {
@@ -23,6 +22,13 @@ export default function RentsList({ rents, returnMovie }) {
                 </p>
                 <p>
                   <strong>Año:</strong> {movie.year}
+                </p>
+                <p>
+                  <strong>Fecha de alquiler:</strong> {movie.rentDate}
+                </p>
+                <p>
+                  <strong>Devolver antes de:</strong>{" "}
+                  <span className="my-rents__date">{movie.returnDate}</span>
                 </p>
                 <button
                   className="my-rents__button"
