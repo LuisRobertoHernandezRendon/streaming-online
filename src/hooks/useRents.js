@@ -18,7 +18,7 @@ export const useRents = () => {
     const itemExists = rents.findIndex((movie) => movie.id === item.id);
 
     if (itemExists >= 0) {
-      alert("Ya rentaste la película seleccionada");
+      alert("Ya rentaste la película seleccionada.");
     } else {
       const today = new Date();
       const returnDate = new Date(today);
@@ -26,13 +26,15 @@ export const useRents = () => {
 
       const newItem = {
         ...item,
+        rentalId: `rnt-${Date.now()}`, // ID único de renta
         rentDate: today.toISOString().split("T")[0],
         returnDate: returnDate.toISOString().split("T")[0],
+        priceRental: item.priceRental || 50, // valor por defecto si no tienes precio
       };
 
       setRents([...rents, newItem]);
 
-      alert("¡Película rentada con éxito!");
+      alert(`¡Has rentado "${item.title}" hasta el ${newItem.returnDate}!`);
     }
   }
 

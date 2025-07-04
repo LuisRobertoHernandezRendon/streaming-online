@@ -9,7 +9,7 @@ export default function RentsList({ rents, returnMovie }) {
       ) : (
         <div className="my-rents__list">
           {rents.map((movie) => (
-            <div className="my-rents__card" key={movie.id}>
+            <div className="my-rents__card" key={movie.rentalId}>
               <img
                 src={movie.image}
                 alt={movie.title}
@@ -24,11 +24,13 @@ export default function RentsList({ rents, returnMovie }) {
                   <strong>Año:</strong> {movie.year}
                 </p>
                 <p>
-                  <strong>Fecha de alquiler:</strong> {movie.rentDate}
+                  <strong>Fecha de renta:</strong> {movie.rentDate}
                 </p>
                 <p>
-                  <strong>Devolver antes de:</strong>{" "}
-                  <span className="my-rents__date">{movie.returnDate}</span>
+                  <strong>Devolución programada:</strong> {movie.returnDate}
+                </p>
+                <p>
+                  <strong>Precio:</strong> ${movie.priceRental} MXN
                 </p>
                 <button
                   className="my-rents__button"
