@@ -14,7 +14,7 @@ export const usePurchases = (showNotification) => {
     localStorage.setItem("purchases", JSON.stringify(purchases));
   }, [purchases]);
 
-  // funcion para realizar la comopra de la pelicula
+  // funcion para realizar la compra de la pelicula
   function purchaseMovie(item) {
     const itemExists = purchases.findIndex((movie) => movie.id === item.id);
 
@@ -28,7 +28,7 @@ export const usePurchases = (showNotification) => {
         const newItem = {
           ...item,
           purchaseDate: today.toISOString().split("T")[0],
-          pricePaid: item.pricePurchase, // valor por defecto si no tienes precio
+          pricePaid: item.pricePurchase,
         };
 
         setPurchases([...purchases, newItem]);

@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import { useState } from "react";
 import NavBar from "./NavBar";
 import logo from "../assets/logo.png";

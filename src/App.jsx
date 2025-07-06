@@ -6,6 +6,7 @@ import MovieDetail from "./components/MovieDetail";
 import RentsList from "./components/RentsList";
 import PurchasesList from "./components/PurchasesList";
 import Notifications from "./components/Notifications";
+import NotFound from "./components/NotFound";
 import { useRents } from "./hooks/useRents";
 import { usePurchases } from "./hooks/usePurchases";
 import { useNotification } from "./hooks/useNotifications";
@@ -52,6 +53,7 @@ function App() {
                 path="/purchases"
                 element={<PurchasesList purchases={purchases} />}
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Notifications
