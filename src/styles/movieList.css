@@ -1,7 +1,18 @@
 .movie-list {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.movie-list__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
-  padding: 3rem;
-  justify-items: center;
+}
+
+.movie-list__empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 2rem;
 }

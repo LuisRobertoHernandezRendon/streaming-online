@@ -1,26 +1,30 @@
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 import { movies } from "../data/data";
+import { useMovieSearch } from "../hooks/useMovieSearch";
 import "../styles/movieList.css";
-import { useEffect, useState } from "react";
 
 export default function MovieList({ rentMovie, purchaseMovie }) {
-  const [moviesData, setMoviesData] = useState([]);
-
-  // se agrega la data de peliculas
-  useEffect(() => {
-    setMoviesData(movies);
-  });
+  const { query, setQuery, filtered } = useMovieSearch(movies);
 
   return (
     <div className="movie-list">
-      {moviesData.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          rentMovie={rentMovie}
-          purchaseMovie={purchaseMovie}
-        />
-      ))}
+      <SearchBar value={query} onSearch={setQuery} />
+
+      <div className="movie-list__grid">
+        {filtered.length > 0 ? (
+          filtered.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              rentMovie={rentMovie}
+              purchaseMovie={purchaseMovie}
+            />
+          ))
+        ) : (
+          <p className="movie-list__empty">No se encontraron películas.</p>
+        )}
+      </div>
     </div>
   );
 }
