@@ -12,7 +12,7 @@ export default function NavBar({ isOpen, toggleMenu }) {
         Mis Alquileres
       </Link>
       <Link className="nav__item" to="/purchases" onClick={toggleMenu}>
-        Compras
+        Mis Compras
       </Link>
     </nav>
   );

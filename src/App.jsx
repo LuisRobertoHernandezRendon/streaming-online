@@ -4,11 +4,14 @@ import Footer from "./components/Footer";
 import MovieList from "./components/MovieList";
 import MovieDetail from "./components/MovieDetail";
 import RentsList from "./components/RentsList";
+import PurchasesList from "./components/PurchasesList";
 import { useRents } from "./hooks/useRents";
+import { usePurchases } from "./hooks/usePurchases";
 import "./styles/app.css";
 
 function App() {
   const { rents, rentMovie, returnMovie } = useRents();
+  const { purchases, purchaseMovie } = usePurchases();
 
   return (
     <>
@@ -20,13 +23,21 @@ function App() {
               <Route path="/" element={<MovieList />} />
               <Route
                 path="/details/:id"
-                element={<MovieDetail rentMovie={rentMovie} />}
+                element={
+                  <MovieDetail
+                    rentMovie={rentMovie}
+                    purchaseMovie={purchaseMovie}
+                  />
+                }
               />
               <Route
                 path="/rentals"
                 element={<RentsList rents={rents} returnMovie={returnMovie} />}
               />
-              {/* <Route path="/purchases" element={<PurchasesPage />} /> */}
+              <Route
+                path="/purchases"
+                element={<PurchasesList purchases={purchases} />}
+              />
             </Routes>
           </main>
           <Footer />

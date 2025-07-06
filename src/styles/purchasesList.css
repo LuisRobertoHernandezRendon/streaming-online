@@ -1,29 +1,29 @@
-.my-rents {
-  max-width: 1000px;
+.my-purchases {
+  max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
   text-align: center;
 }
 
-.my-rents__title {
+.my-purchases__title {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #333;
 }
 
-.my-rents__empty {
+.my-purchases__empty {
   font-size: 1.2rem;
   color: #777;
 }
 
-.my-rents__list {
+.my-purchases__list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
 }
 
-.my-rents__card {
+.my-purchases__card {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
@@ -35,51 +35,36 @@
   max-width: 500px;
 }
 
-.my-rents__poster {
+.my-purchases__poster {
   width: 150px;
   height: 225px;
   object-fit: cover;
   border-radius: 6px;
 }
 
-.my-rents__info {
+.my-purchases__info {
   flex: 1;
   text-align: left;
 }
 
-.my-rents__info h3 {
+.my-purchases__info h3 {
   margin: 0 0 0.5rem;
 }
 
-.my-rents__button {
-  margin-top: 1rem;
-  background: #cc0000;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.my-rents__button:hover {
-  background: #990000;
-}
-
 @media (max-width: 600px) {
-  .my-rents__card {
+  .my-purchases__card {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .my-rents__poster {
+  .my-purchases__poster {
     width: 100%;
     height: auto;
     max-width: 250px;
   }
 
-  .my-rents__info {
+  .my-purchases__info {
     width: 100%;
   }
 }

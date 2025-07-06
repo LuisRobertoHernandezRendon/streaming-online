@@ -15,7 +15,6 @@ body {
   line-height: 1.6;
 }
 
-/* El contenedor flex que controla el footer */
 #root {
   min-height: 100%;
 }
@@ -26,7 +25,6 @@ body {
   min-height: 100vh;
 }
 
-/* Main ocupa el espacio disponible */
 main {
   flex: 1;
   padding: 2rem;

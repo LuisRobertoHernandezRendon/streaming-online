@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { movies } from "../data/data";
 import "../styles/movieDetail.css";
 
-const MovieDetail = ({ rentMovie }) => {
+const MovieDetail = ({ rentMovie, purchaseMovie }) => {
   const { id } = useParams();
   const movie = movies.find((m) => m.id === parseInt(id));
 
@@ -52,7 +52,12 @@ const MovieDetail = ({ rentMovie }) => {
               >
                 Alquilar {movie.priceRental} MX
               </button>
-              <button className="movie-detail__button">Comprar</button>
+              <button
+                className="movie-detail__button"
+                onClick={() => purchaseMovie(movie)}
+              >
+                Comprar {movie.pricePurchase} MX
+              </button>
             </div>
           </div>
         </div>
