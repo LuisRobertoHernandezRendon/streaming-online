@@ -1,6 +1,7 @@
+import Loader from "./Loader";
 import "../styles/rentsList.css";
 
-export default function RentsList({ rents, returnMovie }) {
+export default function RentsList({ rents, returnMovie, isProcessingRent }) {
   return (
     <div className="my-rents">
       <h2 className="my-rents__title">Mis Alquileres</h2>
@@ -35,8 +36,9 @@ export default function RentsList({ rents, returnMovie }) {
                 <button
                   className="my-rents__button"
                   onClick={() => returnMovie(movie.id)}
+                  disabled={isProcessingRent}
                 >
-                  Devolver
+                  {isProcessingRent ? <Loader /> : "Devolver"}
                 </button>
               </div>
             </div>

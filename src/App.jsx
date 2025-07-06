@@ -14,8 +14,10 @@ import "./styles/app.css";
 function App() {
   const { notification, showNotification, clearNotification } =
     useNotification();
-  const { rents, rentMovie, returnMovie } = useRents(showNotification);
-  const { purchases, purchaseMovie } = usePurchases(showNotification);
+  const { rents, rentMovie, returnMovie, isProcessingRent } =
+    useRents(showNotification);
+  const { purchases, purchaseMovie, isProcessingPurchase } =
+    usePurchases(showNotification);
 
   return (
     <>
@@ -31,12 +33,20 @@ function App() {
                   <MovieDetail
                     rentMovie={rentMovie}
                     purchaseMovie={purchaseMovie}
+                    isProcessingRent={isProcessingRent}
+                    isProcessingPurchase={isProcessingPurchase}
                   />
                 }
               />
               <Route
                 path="/rentals"
-                element={<RentsList rents={rents} returnMovie={returnMovie} />}
+                element={
+                  <RentsList
+                    rents={rents}
+                    returnMovie={returnMovie}
+                    isProcessingRent={isProcessingRent}
+                  />
+                }
               />
               <Route
                 path="/purchases"

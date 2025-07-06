@@ -7,6 +7,7 @@ export const usePurchases = (showNotification) => {
   };
 
   const [purchases, setPurchases] = useState(initialPurchases);
+  const [isProcessingPurchase, setIsProcessingPurchase] = useState(false);
 
   // para sincronizar con el localStrorage las compras que se hagan
   useEffect(() => {
@@ -20,22 +21,26 @@ export const usePurchases = (showNotification) => {
     if (itemExists >= 0) {
       showNotification("Ya compraste la película seleccionada.", "error");
     } else {
-      const today = new Date();
+      setIsProcessingPurchase(true);
+      setTimeout(() => {
+        const today = new Date();
 
-      const newItem = {
-        ...item,
-        purchaseDate: today.toISOString().split("T")[0],
-        pricePaid: item.pricePurchase, // valor por defecto si no tienes precio
-      };
+        const newItem = {
+          ...item,
+          purchaseDate: today.toISOString().split("T")[0],
+          pricePaid: item.pricePurchase, // valor por defecto si no tienes precio
+        };
 
-      setPurchases([...purchases, newItem]);
-
-      showNotification(`¡Compra realizada con éxito!`, "success");
+        setPurchases([...purchases, newItem]);
+        setIsProcessingPurchase(false);
+        showNotification(`¡Compra realizada con éxito!`, "success");
+      }, 3000);
     }
   }
 
   return {
     purchases,
     purchaseMovie,
+    isProcessingPurchase,
   };
 };

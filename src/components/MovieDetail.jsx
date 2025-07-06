@@ -1,8 +1,14 @@
 import { useParams } from "react-router-dom";
 import { movies } from "../data/data";
+import Loader from "./Loader";
 import "../styles/movieDetail.css";
 
-const MovieDetail = ({ rentMovie, purchaseMovie }) => {
+const MovieDetail = ({
+  rentMovie,
+  purchaseMovie,
+  isProcessingRent,
+  isProcessingPurchase,
+}) => {
   const { id } = useParams();
   const movie = movies.find((m) => m.id === parseInt(id));
 
@@ -49,14 +55,24 @@ const MovieDetail = ({ rentMovie, purchaseMovie }) => {
               <button
                 className="movie-detail__button"
                 onClick={() => rentMovie(movie)}
+                disabled={isProcessingRent || isProcessingPurchase}
               >
-                Alquilar {movie.priceRental} MX
+                {isProcessingRent ? (
+                  <Loader />
+                ) : (
+                  `Alquilar ${movie.priceRental} MX`
+                )}
               </button>
               <button
                 className="movie-detail__button"
                 onClick={() => purchaseMovie(movie)}
+                disabled={isProcessingPurchase || isProcessingRent}
               >
-                Comprar {movie.pricePurchase} MX
+                {isProcessingPurchase ? (
+                  <Loader />
+                ) : (
+                  `Comprar ${movie.pricePurchase} MX`
+                )}
               </button>
             </div>
           </div>
