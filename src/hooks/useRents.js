@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useRents = () => {
+export const useRents = (showNotification) => {
   const initialRents = () => {
     const localStorageRents = localStorage.getItem("rents");
     return localStorageRents ? JSON.parse(localStorageRents) : [];
@@ -18,7 +18,7 @@ export const useRents = () => {
     const itemExists = rents.findIndex((movie) => movie.id === item.id);
 
     if (itemExists >= 0) {
-      alert("Ya rentaste la película seleccionada.");
+      showNotification("Ya rentaste la película seleccionada.", "error");
     } else {
       const today = new Date();
       const returnDate = new Date(today);
@@ -34,13 +34,16 @@ export const useRents = () => {
 
       setRents([...rents, newItem]);
 
-      alert(`¡Has rentado "${item.title}" hasta el ${newItem.returnDate}!`);
+      showNotification(
+        `¡Has rentado "${item.title}" hasta el ${newItem.returnDate}!`,
+        "success"
+      );
     }
   }
 
   function returnMovie(id) {
     setRents((prevRents) => prevRents.filter((movie) => movie.id !== id));
-    alert(`Has devuelto la película correctamente.`);
+    showNotification(`Has devuelto la película correctamente.`, "success");
   }
 
   return {

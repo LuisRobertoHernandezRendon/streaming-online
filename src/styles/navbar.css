@@ -16,6 +16,7 @@
 /* Modo móvil */
 @media (max-width: 768px) {
   .nav {
+    z-index: 1;
     position: absolute;
     top: 100%;
     right: 0;
@@ -24,10 +25,10 @@
     width: 200px;
     gap: 1rem;
     padding: 1rem;
-    display: none; /* oculto por defecto */
+    display: none;
   }
 
   .nav--open {
-    display: flex; /* mostrar si abierto */
+    display: flex;
   }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const usePurchases = () => {
+export const usePurchases = (showNotification) => {
   const initialPurchases = () => {
     const localStoragePurchases = localStorage.getItem("purchases");
     return localStoragePurchases ? JSON.parse(localStoragePurchases) : [];
@@ -18,7 +18,7 @@ export const usePurchases = () => {
     const itemExists = purchases.findIndex((movie) => movie.id === item.id);
 
     if (itemExists >= 0) {
-      alert("Ya compraste la película seleccionada.");
+      showNotification("Ya compraste la película seleccionada.", "error");
     } else {
       const today = new Date();
 
@@ -30,7 +30,7 @@ export const usePurchases = () => {
 
       setPurchases([...purchases, newItem]);
 
-      alert(`¡Compra realizada con éxito!`);
+      showNotification(`¡Compra realizada con éxito!`, "success");
     }
   }
 

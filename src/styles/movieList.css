@@ -1,6 +1,6 @@
 .movie-list {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   padding: 1rem;
 }
 
@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
+  justify-items: center;
 }
 
 .movie-list__empty {
@@ -15,4 +16,11 @@
   font-size: 1.2rem;
   color: #555;
   margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .movie-list__grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }

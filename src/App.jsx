@@ -5,13 +5,17 @@ import MovieList from "./components/MovieList";
 import MovieDetail from "./components/MovieDetail";
 import RentsList from "./components/RentsList";
 import PurchasesList from "./components/PurchasesList";
+import Notifications from "./components/Notifications";
 import { useRents } from "./hooks/useRents";
 import { usePurchases } from "./hooks/usePurchases";
+import { useNotification } from "./hooks/useNotifications";
 import "./styles/app.css";
 
 function App() {
-  const { rents, rentMovie, returnMovie } = useRents();
-  const { purchases, purchaseMovie } = usePurchases();
+  const { notification, showNotification, clearNotification } =
+    useNotification();
+  const { rents, rentMovie, returnMovie } = useRents(showNotification);
+  const { purchases, purchaseMovie } = usePurchases(showNotification);
 
   return (
     <>
@@ -40,6 +44,10 @@ function App() {
               />
             </Routes>
           </main>
+          <Notifications
+            notification={notification}
+            onClose={clearNotification}
+          />
           <Footer />
         </div>
       </BrowserRouter>

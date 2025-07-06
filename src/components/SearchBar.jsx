@@ -3,7 +3,6 @@ import "../styles/searchBar.css";
 export default function SearchBar({ value, onSearch }) {
   return (
     <div className="search-bar">
-      <span className="search-bar__icon">🔍</span>
       <input
         type="text"
         placeholder="Buscar película (título, sinopsis, categoría, año, director, idioma y actores)"
