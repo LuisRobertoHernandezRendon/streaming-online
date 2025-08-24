@@ -331,3 +331,10 @@ export const movies = [
     pricePurchase: 140,
   },
 ];
+
+// export const API_URL = 'http://localhost:8762' 
+export const API_URL = 'https://spring-cloud-gateway-production-06e3.up.railway.app' 
+export const userID = 1 
+
+export const CATEGORIES = ["Acción", "Comedia", "Drama", "Ciencia Ficción", "Terror"];
+export const LANGUAGES = ["Español", "Inglés", "Francés", "Alemán", "Japonés"];

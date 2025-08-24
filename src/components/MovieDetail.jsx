@@ -1,16 +1,30 @@
 import { useParams } from "react-router-dom";
-import { movies } from "../data/data";
+// import { movies } from "../data/data";
 import Loader from "./Loader";
 import "../styles/movieDetail.css";
+import { useEffect, useState } from "react";
+import { API_URL } from "../data/data";
 
-const MovieDetail = ({
-  rentMovie,
-  purchaseMovie,
-  isProcessingRent,
-  isProcessingPurchase,
-}) => {
+const MovieDetail = ({ rentMovie, purchaseMovie, isProcessingRent, isProcessingPurchase }) => {
+  
   const { id } = useParams();
-  const movie = movies.find((m) => m.id === parseInt(id));
+  const[movie, setMovie] = useState(null);
+
+  // Hook para traer los datos de la API
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(`${API_URL}/ms-buscador/elastic/movies/${id}`); // <-- Cambia la URL
+        if (!response.ok) throw new Error("Error al obtener las películas");
+        const data = await response.json();
+        setMovie(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovies();
+  }, [id]);
 
   if (!movie) {
     return (
@@ -37,7 +51,7 @@ const MovieDetail = ({
               <strong>Director:</strong> {movie.director}
             </p>
             <p className="movie-detail__section">
-              <strong>Año:</strong> {movie.year}
+              <strong>Año:</strong> {movie.releaseYear}
             </p>
             <p className="movie-detail__section">
               <strong>Duración:</strong> {movie.duration}
@@ -49,7 +63,7 @@ const MovieDetail = ({
               <strong>Sinopsis:</strong> {movie.synopsis}
             </p>
             <p className="movie-detail__section">
-              <strong>Actores:</strong> {movie.actors.join(", ")}
+              <strong>Actores:</strong> {movie.actors}
             </p>
             <div className="movie-detail__actions">
               <button

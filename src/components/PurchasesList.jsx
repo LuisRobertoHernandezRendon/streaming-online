@@ -9,25 +9,25 @@ export default function PurchasesList({ purchases }) {
       ) : (
         <div className="my-purchases__list">
           {purchases.map((movie) => (
-            <div className="my-purchases__card" key={movie.id}>
+            <div className="my-purchases__card" key={movie.purchaseId}>
               <img
-                src={movie.image}
-                alt={movie.title}
+                src={movie.movie.image}
+                alt={movie.movie.title}
                 className="my-purchases__poster"
               />
               <div className="my-purchases__info">
                 <h3>{movie.title}</h3>
                 <p>
-                  <strong>Director:</strong> {movie.director}
+                  <strong>Director:</strong> {movie.movie.director}
                 </p>
                 <p>
-                  <strong>Año:</strong> {movie.year}
+                  <strong>Año:</strong> {movie.movie.releaseYear}
                 </p>
                 <p>
-                  <strong>Fecha de compra:</strong> {movie.purchaseDate}
+                  <strong>Fecha de compra:</strong> {movie.movie.purchaseAt}
                 </p>
                 <p>
-                  <strong>Precio pagado:</strong> {movie.pricePaid} MXN
+                  <strong>Precio pagado:</strong> {movie.pricePurchase} MXN
                 </p>
               </div>
             </div>

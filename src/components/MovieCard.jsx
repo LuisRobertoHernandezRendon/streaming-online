@@ -7,7 +7,7 @@ export default function MovieCard({ movie }) {
       <img src={movie.image} alt={movie.title} className="movie-card__image" />
       <h2 className="movie-card__title">{movie.title}</h2>
       <p className="movie-card__info">
-        {movie.year} • {movie.category}
+        {movie.releaseYear} • {movie.category}
       </p>
       <Link className="movie-card__link" to={`/details/${movie.id}`}>
         Ver detalles

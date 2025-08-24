@@ -1,30 +1,31 @@
 import MovieCard from "./MovieCard";
-import SearchBar from "./SearchBar";
-import { movies } from "../data/data";
 import { useMovieSearch } from "../hooks/useMovieSearch";
 import "../styles/movieList.css";
+import FiltersSidebar from "./FiltersSidebar";
 
-export default function MovieList({ rentMovie, purchaseMovie }) {
-  const { query, setQuery, filtered } = useMovieSearch(movies);
+export default function MovieList() {
+
+  const { filters, updateFilter, movies, loading } = useMovieSearch();
 
   return (
     <div className="movie-list">
-      <SearchBar value={query} onSearch={setQuery} />
+      <aside className="movie-list__sidebar">
+        <FiltersSidebar filters={filters} onChange={updateFilter} />
+      </aside>
 
-      <div className="movie-list__grid">
-        {filtered.length > 0 ? (
-          filtered.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              rentMovie={rentMovie}
-              purchaseMovie={purchaseMovie}
-            />
-          ))
+      <main className="movie-list__content">
+        {loading && <p className="movie-list__empty">Buscando películas...</p>}
+
+        {!loading && movies.length > 0 ? (
+          <div className="movie-list__grid">
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
         ) : (
-          <p className="movie-list__empty">No se encontraron películas.</p>
+          !loading && <p className="movie-list__empty">No se encontraron películas.</p>
         )}
-      </div>
+      </main>
     </div>
   );
 }
